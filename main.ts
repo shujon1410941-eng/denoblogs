@@ -1,5 +1,10 @@
-import { serveFile } from "jsr:@std/http/file-server";
+import { serveDir } from "jsr:@std/http/file-server";
 
-Deno.serve((req: Request) => {
-    return serveFile(req, "./index.html");
+Deno.serve((req) => {
+  return serveDir(req, {
+    fsRoot: ".",
+    urlRoot: "",
+    showDirListing: false,
+    enableCors: true,
+  });
 });
